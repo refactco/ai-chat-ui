@@ -11,7 +11,6 @@ import { exportLocalStorageAsJSON } from "@/lib/export-old-data"
 import { fetchOpenRouterModels } from "@/lib/models/fetch-models"
 import { LLM_LIST_MAP } from "@/lib/models/llm/llm-list"
 import { supabase } from "@/lib/supabase/browser-client"
-import { cn } from "@/lib/utils"
 import { OpenRouterLLM } from "@/types"
 import {
   IconCircleCheckFilled,
@@ -85,6 +84,7 @@ export const ProfileSettings: FC<ProfileSettingsProps> = ({}) => {
   const [azureOpenaiAPIKey, setAzureOpenaiAPIKey] = useState(
     profile?.azure_openai_api_key || ""
   )
+  const [asanaAPIKey, setAsanaAPIKey] = useState(profile?.asana_api_key || "")
   const [azureOpenaiEndpoint, setAzureOpenaiEndpoint] = useState(
     profile?.azure_openai_endpoint || ""
   )
@@ -443,7 +443,7 @@ export const ProfileSettings: FC<ProfileSettingsProps> = ({}) => {
                       ? ""
                       : "OpenAI API Key"}
 
-                  <Button
+                  {/* <Button
                     className={cn(
                       "h-[18px] w-[150px] text-[11px]",
                       (useAzureOpenai && !envKeyMap["azure"]) ||
@@ -456,7 +456,7 @@ export const ProfileSettings: FC<ProfileSettingsProps> = ({}) => {
                     {useAzureOpenai
                       ? "Switch To Standard OpenAI"
                       : "Switch To Azure OpenAI"}
-                  </Button>
+                  </Button> */}
                 </Label>
 
                 {useAzureOpenai ? (
@@ -478,7 +478,7 @@ export const ProfileSettings: FC<ProfileSettingsProps> = ({}) => {
                       <Label>OpenAI API key set by admin.</Label>
                     ) : (
                       <Input
-                        placeholder="OpenAI API Key"
+                        placeholder="OpenAI API Key hello"
                         type="password"
                         value={openaiAPIKey}
                         onChange={e => setOpenaiAPIKey(e.target.value)}
@@ -627,8 +627,17 @@ export const ProfileSettings: FC<ProfileSettingsProps> = ({}) => {
                   </>
                 )}
               </div>
+              <div className="mt-5 space-y-2">
+                <Label className="flex items-center">Asana API Key</Label>
+                <Input
+                  placeholder="Asana API Key"
+                  type="password"
+                  value={asanaAPIKey}
+                  onChange={e => setAsanaAPIKey(e.target.value)}
+                />
+              </div>
 
-              <div className="space-y-1">
+              {/* <div className="space-y-1">
                 {envKeyMap["anthropic"] ? (
                   <Label>Anthropic API key set by admin.</Label>
                 ) : (
@@ -722,7 +731,7 @@ export const ProfileSettings: FC<ProfileSettingsProps> = ({}) => {
                     />
                   </>
                 )}
-              </div>
+              </div> */}
             </TabsContent>
           </Tabs>
         </div>

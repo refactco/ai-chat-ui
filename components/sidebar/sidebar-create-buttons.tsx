@@ -2,7 +2,7 @@ import { useChatHandler } from "@/components/chat/chat-hooks/use-chat-handler"
 import { ChatbotUIContext } from "@/context/context"
 import { createFolder } from "@/db/folders"
 import { ContentType } from "@/types"
-import { IconFolderPlus, IconPlus } from "@tabler/icons-react"
+import { IconPlus } from "@tabler/icons-react"
 import { FC, useContext, useState } from "react"
 import { Button } from "../ui/button"
 import { CreateAssistant } from "./items/assistants/create-assistant"
@@ -104,11 +104,11 @@ export const SidebarCreateButtons: FC<SidebarCreateButtonsProps> = ({
           contentType.slice(1, contentType.length - 1)}
       </Button>
 
-      {hasData && (
+      {/* {hasData && (
         <Button className="size-[36px] p-1" onClick={handleCreateFolder}>
           <IconFolderPlus size={20} />
         </Button>
-      )}
+      )} */}
 
       {isCreatingPrompt && (
         <CreatePrompt

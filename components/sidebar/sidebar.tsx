@@ -4,8 +4,6 @@ import { ContentType } from "@/types"
 import { FC, useContext } from "react"
 import { SIDEBAR_WIDTH } from "../ui/dashboard"
 import { TabsContent } from "../ui/tabs"
-import { WorkspaceSwitcher } from "../utility/workspace-switcher"
-import { WorkspaceSettings } from "../workspace/workspace-settings"
 import { SidebarContent } from "./sidebar-content"
 
 interface SidebarProps {
@@ -61,45 +59,45 @@ export const Sidebar: FC<SidebarProps> = ({ contentType, showSidebar }) => {
       value={contentType}
     >
       <div className="flex h-full flex-col p-3">
-        <div className="flex items-center border-b-2 pb-2">
+        {/* <div className="flex items-center border-b-2 pb-2">
           <WorkspaceSwitcher />
 
           <WorkspaceSettings />
-        </div>
+        </div> */}
 
         {(() => {
           switch (contentType) {
             case "chats":
               return renderSidebarContent("chats", chats, chatFolders)
 
-            case "presets":
-              return renderSidebarContent("presets", presets, presetFolders)
+            // case "presets":
+            //   return renderSidebarContent("presets", presets, presetFolders)
 
-            case "prompts":
-              return renderSidebarContent("prompts", prompts, promptFolders)
+            // case "prompts":
+            //   return renderSidebarContent("prompts", prompts, promptFolders)
 
-            case "files":
-              return renderSidebarContent("files", files, filesFolders)
+            // case "files":
+            //   return renderSidebarContent("files", files, filesFolders)
 
-            case "collections":
-              return renderSidebarContent(
-                "collections",
-                collections,
-                collectionFolders
-              )
+            // case "collections":
+            //   return renderSidebarContent(
+            //     "collections",
+            //     collections,
+            //     collectionFolders
+            //   )
 
-            case "assistants":
-              return renderSidebarContent(
-                "assistants",
-                assistants,
-                assistantFolders
-              )
+            // case "assistants":
+            //   return renderSidebarContent(
+            //     "assistants",
+            //     assistants,
+            //     assistantFolders
+            //   )
 
-            case "tools":
-              return renderSidebarContent("tools", tools, toolFolders)
+            // case "tools":
+            //   return renderSidebarContent("tools", tools, toolFolders)
 
-            case "models":
-              return renderSidebarContent("models", models, modelFolders)
+            // case "models":
+            //   return renderSidebarContent("models", models, modelFolders)
 
             default:
               return null

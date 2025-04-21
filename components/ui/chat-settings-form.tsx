@@ -5,9 +5,8 @@ import { CHAT_SETTING_LIMITS } from "@/lib/chat-setting-limits"
 import { ChatSettings } from "@/types"
 import { IconInfoCircle } from "@tabler/icons-react"
 import { FC, useContext } from "react"
-import { ModelSelect } from "../models/model-select"
-import { AdvancedSettings } from "./advanced-settings"
 import { Checkbox } from "./checkbox"
+import { Input } from "./input"
 import { Label } from "./label"
 import {
   Select,
@@ -17,7 +16,6 @@ import {
   SelectValue
 } from "./select"
 import { Slider } from "./slider"
-import { TextareaAutosize } from "./textarea-autosize"
 import { WithTooltip } from "./with-tooltip"
 
 interface ChatSettingsFormProps {
@@ -39,7 +37,7 @@ export const ChatSettingsForm: FC<ChatSettingsFormProps> = ({
 
   return (
     <div className="space-y-3">
-      <div className="space-y-1">
+      {/* <div className="space-y-1">
         <Label>Model</Label>
 
         <ModelSelect
@@ -48,12 +46,23 @@ export const ChatSettingsForm: FC<ChatSettingsFormProps> = ({
             onChangeChatSettings({ ...chatSettings, model })
           }}
         />
-      </div>
+      </div> */}
 
       <div className="space-y-1">
-        <Label>Prompt</Label>
+        <Label>Asana API Key</Label>
 
-        <TextareaAutosize
+        <Input
+          className="bg-background border-input border-2"
+          placeholder="Put Your Asana API Key Here"
+          onChange={event => {
+            onChangeChatSettings({
+              ...chatSettings,
+              asanaApiKey: event.target.value
+            })
+          }}
+          value={chatSettings.asanaApiKey}
+        />
+        {/* <TextareaAutosize
           className="bg-background border-input border-2"
           placeholder="You are a helpful AI assistant."
           onValueChange={prompt => {
@@ -62,10 +71,10 @@ export const ChatSettingsForm: FC<ChatSettingsFormProps> = ({
           value={chatSettings.prompt}
           minRows={3}
           maxRows={6}
-        />
+        /> */}
       </div>
 
-      {useAdvancedDropdown ? (
+      {/* {useAdvancedDropdown ? (
         <AdvancedSettings>
           <AdvancedContent
             chatSettings={chatSettings}
@@ -81,7 +90,7 @@ export const ChatSettingsForm: FC<ChatSettingsFormProps> = ({
             showTooltip={showTooltip}
           />
         </div>
-      )}
+      )} */}
     </div>
   )
 }
