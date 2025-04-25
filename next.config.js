@@ -1,10 +1,10 @@
-const withBundleAnalyzer = require("@next/bundle-analyzer")({
-  enabled: process.env.ANALYZE === "true"
-})
+const withBundleAnalyzer = require('@next/bundle-analyzer')({
+  enabled: process.env.ANALYZE === 'true'
+});
 
-const withPWA = require("next-pwa")({
-  dest: "public"
-})
+const withPWA = require('next-pwa')({
+  dest: 'public'
+});
 
 module.exports = withBundleAnalyzer(
   withPWA({
@@ -12,21 +12,21 @@ module.exports = withBundleAnalyzer(
     images: {
       remotePatterns: [
         {
-          protocol: "http",
-          hostname: "localhost"
+          protocol: 'http',
+          hostname: 'localhost'
         },
         {
-          protocol: "http",
-          hostname: "127.0.0.1"
+          protocol: 'http',
+          hostname: '127.0.0.1'
         },
         {
-          protocol: "https",
-          hostname: "**"
+          protocol: 'https',
+          hostname: '**'
         }
       ]
     },
     experimental: {
-      serverComponentsExternalPackages: ["sharp", "onnxruntime-node"]
+      serverComponentsExternalPackages: ['sharp', 'onnxruntime-node']
     }
   })
-)
+);

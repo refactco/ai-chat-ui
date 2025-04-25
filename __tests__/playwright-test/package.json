@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "integration": "playwright test", 
+    "integration": "playwright test",
     "integration:open": "playwright test --ui",
     "integration:codegen": "playwright codegen"
   },
